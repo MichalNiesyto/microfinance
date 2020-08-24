@@ -25,7 +25,12 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
+    {   
+        $user = Auth::user();
+        $budget = $user->getBudget();
+        if($budget === null) {
+            return view('home');
+        }
+        return view('budget', ['budget' => $budget]);
     }
 }

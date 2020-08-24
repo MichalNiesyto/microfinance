@@ -37,16 +37,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getBudgets(){
-        return BudgetPermission::where('user_id', $this->id)
-            ->join('budgets', 'budget_permissions.budget_id', '=', 'budgets.id')
-            ->get();
-    }
-
-    public function getBudget($id){
-        return Budget::findOrFail($id)
-            ->join('budget_permissions', 'budget_permissions.budget_id', '=', 'budgets.id')
-            ->get();
+    public function getBudget(){
+        return BudgetUserAccess::getBudget($this);
     }
 
 }
