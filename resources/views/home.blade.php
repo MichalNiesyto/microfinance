@@ -2,22 +2,14 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
+    You doesn't created budget yet.
+    Please create your budget or wait for invitation to use one budget with others.
+    <form method="post" action="/budget/create">
+        @csrf
+        <button class="btn-danger" type="submit">Create your budget</button>
+    </form>
+    <ul>
+        Your budget invitations (you can only accept invitation to one budget)
+    </ul>
 </div>
 @endsection

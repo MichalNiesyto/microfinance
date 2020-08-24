@@ -33,4 +33,14 @@ class HomeController extends Controller
         }
         return view('budget', ['budget' => $budget]);
     }
+
+    public function createBudget(){
+        // TODO verify csrf
+        $user = Auth::user();
+        $budget = $user->getBudget();
+        if($budget === null) {
+            Budget::createBudgetForUser($user);
+        }
+        return redirect('/');
+    }
 }
