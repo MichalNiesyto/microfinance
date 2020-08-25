@@ -28,19 +28,6 @@ class HomeController extends Controller
     {   
         $user = Auth::user();
         $budget = $user->getBudget();
-        if($budget === null) {
-            return view('home');
-        }
         return view('budget', ['budget' => $budget]);
-    }
-
-    public function createBudget(){
-        // TODO verify csrf
-        $user = Auth::user();
-        $budget = $user->getBudget();
-        if($budget === null) {
-            Budget::createBudgetForUser($user);
-        }
-        return redirect('/');
     }
 }

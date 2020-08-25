@@ -42,4 +42,8 @@ class User extends Authenticatable
         return Budget::find($this->budget_id);
     }
 
+    public function createBudget(){
+        return Budget::createBudgetForUser($this);
+    }
+
 }
