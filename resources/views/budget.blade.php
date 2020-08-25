@@ -2,6 +2,7 @@
 
 @section('content')
 
-{{ $budget->name }}
+<budget>
+</budget>
 
 @endsection
